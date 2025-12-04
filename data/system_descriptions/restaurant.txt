@@ -1,0 +1,13 @@
+Library Management System
+
+This system manages books, members, and loans for a public library.
+
+Members register with their name, address, phone number, email, and membership date. Members are assigned a membership type (standard, premium, student) which determines how many books they can borrow simultaneously.
+
+Books have an ISBN, title, publication year, and page count. Each book can have multiple authors, and authors can write multiple books. Books belong to exactly one genre (Fiction, Non-Fiction, Science, History, etc.).
+
+The library owns multiple copies of each book. Each copy has a unique barcode, acquisition date, and condition status (good, fair, poor). Some copies may be marked as reference-only and cannot be borrowed.
+
+Loans record when a member borrows a copy. Each loan tracks the checkout date, due date, and return date (null if not yet returned). Members can have multiple active loans up to their membership type limit.
+
+Fines are assessed when books are returned late. Each fine records the amount, reason, date issued, and whether it has been paid. Fines are linked to the specific loan that caused them.

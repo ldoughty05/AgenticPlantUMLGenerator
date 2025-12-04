@@ -1,0 +1,15 @@
+Hospital Patient Management System
+
+This system tracks patients, doctors, appointments, and medical records at a hospital.
+
+Patients have a patient ID, name, date of birth, gender, blood type, phone number, emergency contact name, and emergency contact phone. Patients can have known allergies stored as a list.
+
+Doctors have an employee ID, name, phone number, email, specialization (Cardiology, Neurology, Pediatrics, etc.), and years of experience. Each doctor is assigned to one primary department but may consult across departments.
+
+Departments have a name, floor number, and phone extension. Each department has a head doctor.
+
+Appointments schedule patient visits with doctors. Each appointment has a date, time, duration, status (scheduled, completed, cancelled, no-show), and reason for visit. An appointment involves exactly one patient and one doctor.
+
+Medical Records document patient visits. Each record links to an appointment and contains diagnosis, treatment notes, prescriptions (medication name, dosage, frequency, duration), and follow-up instructions. A record is created by the doctor who saw the patient.
+
+The system also tracks which rooms patients are admitted to for inpatient care, including admission date, discharge date, and the assigned nurse.

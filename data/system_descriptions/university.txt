@@ -1,0 +1,15 @@
+University Course Registration System
+
+This system manages student enrollment in courses at a university.
+
+Students have a student ID, name, email, enrollment date, and declared major. Each student can enroll in multiple courses per semester.
+
+Professors have an employee ID, name, email, office location, and hire date. Professors belong to exactly one department but can teach courses in other departments.
+
+Departments have a name, building location, and budget. Each department has one professor serving as the department head.
+
+Courses have a course code (like CS101), title, description, and credit hours. Each course belongs to one department. Courses can have prerequisites - other courses that must be completed first.
+
+Sections are specific offerings of a course in a given semester. Each section has a section number, semester (Fall 2024, Spring 2025, etc.), meeting days, time, room number, and maximum capacity. A section is taught by one professor.
+
+Enrollments track which students are registered for which sections, including their current grade and enrollment date. Students cannot enroll in sections that exceed capacity.

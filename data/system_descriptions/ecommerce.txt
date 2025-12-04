@@ -1,0 +1,13 @@
+E-commerce Order Management System
+
+This system manages an online retail store where customers can browse products, place orders, and track deliveries.
+
+Customers have accounts with their personal information including name, email, phone number, and can store multiple shipping addresses. Each customer can place many orders over time.
+
+Products belong to categories (like Electronics, Clothing, Home & Garden). Each product has a name, description, price, SKU, and current stock quantity. Products can belong to multiple categories.
+
+Orders contain one or more order items, each specifying a product and quantity. Orders track the order date, status (pending, shipped, delivered, cancelled), and which shipping address to use. Each order belongs to exactly one customer.
+
+Payments are recorded for each order, tracking the payment method (credit card, PayPal, etc.), amount, payment date, and status. An order can have multiple payment attempts if one fails.
+
+The system also tracks product reviews - customers can leave a rating (1-5 stars) and written review for products they've purchased.
