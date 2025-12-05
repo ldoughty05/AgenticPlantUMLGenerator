@@ -15,8 +15,8 @@ load_dotenv()
 
 
 # Configuration
-IMAGES_DIR = Path("images")
-DESCRIPTIONS_DIR = Path("system_descriptions")
+IMAGES_DIR = Path("data/images")
+DESCRIPTIONS_DIR = Path("data/system_descriptions")
 PROMPT_FILE = Path("prompt.md")
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".svg"}
 
@@ -89,6 +89,15 @@ def list_available_diagrams() -> list[dict]:
     return available
 
 
+def list_models(api_key: str) -> None:
+    """List available Gemini models."""
+    genai.configure(api_key=api_key)
+    print("Available models:\n")
+    for model in genai.list_models():
+        if "generateContent" in model.supported_generation_methods:
+            print(f"  {model.name}")
+
+
 def analyze_er_diagram(image_path: Path, description: str, api_key: str) -> str:
     """
     Analyze an ER diagram image and generate PlantUML code.
@@ -102,7 +111,9 @@ def analyze_er_diagram(image_path: Path, description: str, api_key: str) -> str:
         Full response from the model
     """
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel("gemini-1.5-flash")
+    
+    # Use gemini-1.5-flash with the full path, or try gemini-2.0-flash
+    model = genai.GenerativeModel("models/gemini-2.0-flash")
 
     image_data = encode_image(image_path)
     prompt = load_prompt(description)
@@ -146,11 +157,13 @@ Examples:
   python er_verifier.py mydiagram
   python er_verifier.py --list
   python er_verifier.py --all
+  python er_verifier.py --list-models
   python er_verifier.py mydiagram --output result.puml
         """
     )
     parser.add_argument("name", nargs="?", help="Diagram name (without extension)")
     parser.add_argument("--list", "-l", action="store_true", help="List available diagrams")
+    parser.add_argument("--list-models", action="store_true", help="List available Gemini models")
     parser.add_argument("--all", "-a", action="store_true", help="Process all available diagrams")
     parser.add_argument("--output", "-o", help="Output file for PlantUML code")
     parser.add_argument("--output-dir", help="Output directory for batch processing")
@@ -163,6 +176,10 @@ Examples:
     if not api_key:
         print("Error: GEMINI_API_KEY not found in environment or .env file")
         sys.exit(1)
+    
+    if args.list_models:
+        list_models(api_key)
+        return
     
     if not IMAGES_DIR.exists():
         print(f"Error: Images directory not found: {IMAGES_DIR}")
