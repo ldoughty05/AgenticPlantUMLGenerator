@@ -1,5 +1,5 @@
 # Agentic ER Diagram Verifier and PlantUML Code Generator
-Authors: Luke Doughty _(add your name if you contribute anything)_
+Authors: Luke Doughty, James Benton_(add your name if you contribute anything)_
 
 ## Installation
 ```{bash}
